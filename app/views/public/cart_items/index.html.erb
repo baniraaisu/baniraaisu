@@ -1,2 +1,14 @@
 <h1>Public::CartItems#index</h1>
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
+
+<!--テストよう-->
+<tabel>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</tabel>
