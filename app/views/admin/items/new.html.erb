@@ -1,7 +1,7 @@
 <h1>商品新規登録</h1>
 
-<table>
-  <%= form_with model: @item, url: admin_items_path do |f| %>
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  <table>
     <tr>
       <td><%= f.label :image, "商品画像"%></td>
       <td><%= f.file_field :image, accept: "/image*" %></td>
@@ -32,10 +32,9 @@
         <%= f.radio_button :selling_status, :false %>
         <%= f.label :selling_status, "売切れ" %>
       </td>
-
     </tr>
     <tr>
-      <td><%= f.submit "新規投稿" %></td>
+      <td><%= f.submit '新規投稿' %></td>
     </tr>
-  <% end %>
-</table>
+　</table>
+<% end %>
