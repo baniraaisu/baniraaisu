@@ -1,2 +1,12 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= image_tag @item.get_image(200,200) %>
+
+<h1><%= @item.name %></h1>
+<p><%= @item.introduction %></p>
+
+<p>￥<%= @item.after_tax_on_price.round %>(税込)</p>
+
+<p>個数</p>
+<%= form_with model: @item_to_cart, url: public_cart_items_path do |f| %>
+<%= f.select :number, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]] %>
+<%= f.submit "カートに入れる" %>
+<% end %>

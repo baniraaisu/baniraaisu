@@ -4,7 +4,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= image_tag @item.get_image %></td>
+      <td><%= image_tag @item.get_image(300,300) %></td>
     </tr>
     <tr>
       <td><p>商品名</p></td>
@@ -16,11 +16,11 @@
     </tr>
     <tr>
       <td><p>ジャンル</p></td>
-      <td><%= @item.genre %></td>
+      <td><%= @item.genre.name %></td>
     </tr>
     <tr>
       <td>税込価格（税抜価格）</td>
-      <td><%= @item. %>(<%= @item.tax_off_price %>)</td>
+      <td><%= @item.after_tax_on_price.round %>(<%= @item.tax_off_price %>)円</td>
     </tr>
     <tr>
       <td><p>販売ステータス</p></td>
