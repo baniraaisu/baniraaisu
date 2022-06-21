@@ -4,6 +4,8 @@ class CreateShippingAdresses < ActiveRecord::Migration[6.1]
       t.string :adress_name
       t.string :post_code
       t.string :adress
+      
+      t.integer :customer_id
 
       t.timestamps
     end
