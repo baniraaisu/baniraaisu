@@ -1,4 +1,33 @@
 <h1>配送先登録/一覧</h1>
 
-<%= form_with model: @shipping_adress %>
+<%= form_with model: @shipping_adress, url: public_shipping_adresses_path do |f| %>
+  <%= f.label :post_code, "郵便番号" %>
+  <%= f.text_field :post_code, placeholder: "0000000", rows: 20 %>
+  <%= f.label :adress, "住所" %>
+  <%= f.text_field :adress, placeholder: "ご住所を入力" %>
+  <%= f.label :adress_name, "宛名" %>
+  <%= f.text_field :adress_name, placeholder: "宛名を入力" %>
+  <%= f.submit "新規登録" %>
 <% end %>
+
+<table>
+  <tbody>
+    <tr>
+      <td>郵便番号</td>
+      <td>住所</td>
+      <td>宛名</td>
+      <td></td>
+    </tr>
+    <% @shipping_adresses.each do |shipping_adress| %>
+      <tr>
+        <td>〒<%= shipping_adress.post_code %></td>
+        <td><%= shipping_adress.adress %></td>
+        <td><p><%= shipping_adress.adress_name %>様</p></td>
+        <td>
+          <%= link_to "編集する", edit_public_shipping_adress_path(shipping_adress) %>
+          <%= link_to "消去する", public_shipping_adress_path(shipping_adress), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

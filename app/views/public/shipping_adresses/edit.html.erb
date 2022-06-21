@@ -1,2 +1,24 @@
-<h1>Public::ShippingAdresses#edit</h1>
-<p>Find me in app/views/public/shipping_adresses/edit.html.erb</p>
+<%= form_with model: @shipping_adress, url: public_shipping_adress_path, method: :patch do |f| %>
+<tabel>
+    <thead>
+        <h1>配送先編集</h1>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= f.label :post_code, "郵便番号" %></td>
+            <td><%= f.text_field :post_code %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :adress, "住所" %></td>
+            <td><%= f.text_field :adress %></td>
+        </tr>
+        <tr>
+            <td><%= f.label :adress_name, "宛名" %></td>
+            <td><%= f.text_field :adress_name %></td>
+        </tr>
+        <tr>
+            <%= f.submit "新規登録" %>
+        </tr>
+    </tbody>
+</tabel>
+<% end %>
