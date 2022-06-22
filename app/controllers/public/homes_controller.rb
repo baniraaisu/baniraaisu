@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def show
-   @items = Item.all
+   @items = Item.page(params[:page])
   end
 
   def about

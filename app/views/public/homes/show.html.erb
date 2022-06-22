@@ -1,13 +1,13 @@
 <div class="container">
 
-<div class="row", class="mx-auto" class="d-flex align-items-center">
-<%= image_tag 'cake.jpg' %>
+<div class="row">
+    <%= image_tag 'cake.jpg' %>
 </div>
 
 <div class="row">
 <p>
   ようこそ、ながのCAKEへ<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
+  このサイトは、ケーキ販売のECサイトになります<br>
   会員でない方も商品の閲覧はできますが、<br>
   購入には会員登録が必要となります。
 </p>
@@ -16,18 +16,21 @@
 <div class="row">
   <h1>新着商品</h1>
 
-<%= @items.each do |item| %>
 
-  <p>タイトル</p>
+<% @items.each do |item| %>
 
-  <!-- 商品画像 -->
-  <%= image_tag item.image %>
-  <!-- 商品名 -->
-  <%= item.name %>
-  <!--値段-->
-  <%= item.tax_off_price %>
+
+
+    <!-- 商品画像 -->
+    <%= image_tag item.get_image(100,100) %>
+    <!-- 商品名 -->
+    <%= item.name %>
+    <!--値段-->
+    ￥<%= item.after_tax_on_price.round %>
+
 
 <% end %>
+<%= paginate @items %>
 
 </div>
 
