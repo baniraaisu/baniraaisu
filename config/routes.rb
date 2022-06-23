@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
-  
   namespace :public do
     get "/about"=>"homes#about"
     resources :items, only: [:index, :show]
@@ -32,8 +31,8 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" =>"customers#withdraw"
     get "/customers/result" => "customers#result"
     resources :customers, only:[:show, :edit, :update]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :shipping_adresses, only: [:index, :edit, :create, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

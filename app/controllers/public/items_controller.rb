@@ -6,6 +6,7 @@ class Public::ItemsController < ApplicationController
 
   def show
      @item = Item.find(params[:id])
+     @cart_item =  CartItem
      @item_to_cart = OrderDetail.new
   end
 
@@ -18,5 +19,9 @@ class Public::ItemsController < ApplicationController
   private
   def order_detail_params
     params.require(:order_detail).permit(:number)
+  end
+
+  def item_params
+    params.require(:items).permit( :genre_id, :name, :introduction, :tax_off_price)
   end
 end
