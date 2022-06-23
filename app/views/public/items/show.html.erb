@@ -5,8 +5,12 @@
 
 <p>￥<%= @item.after_tax_on_price.round %>(税込)</p>
 
-<p>個数</p>
-<%= form_with model: @item_to_cart, url: public_cart_items_path do |f| %>
-<%= f.select :number, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]] %>
-<%= f.submit "カートに入れる" %>
+
+<% if @item.selling_status == TRUE %>
+ <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+  <% f.label :number, "個数" %>
+    <%= f.select :number, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]] %>
+   <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit "カートに入れる" %>
+ <% end %>
 <% end %>
