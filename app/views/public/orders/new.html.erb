@@ -2,16 +2,24 @@
 
 <h3>支払い方法</h3>
 
-<%= form_with do |f| %>
+<%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
 
-  <%= f.radio_button :pay_method, "credit_card" %>
-  <%= f.label :pay_method, "クレジットカード" %>
+  <%= f.radio_button :pay_method, Order.statuses.key(0) %>
+  <%= f.label :pay_method, Order.statusesi18n.invert[:credit_card] %>
 
-  <%= f.radio_button :pay_method, "transfer" %>
-  <%= f.label :pay_method, "銀行振込" %>
+  <%= f.radio_button :pay_method, Order.statuses.key(1) %>
+  <%= f.label :pay_method, Order.statuses[:transfer] %>
 
   <h3>お届け先</h3>
-  <!-- %= f.select :shipping_adresses_id, options_from_collection_for_select(Shipping_adress.all, :id, :full_address) %> -->
+  <!-- %= f.select :shipping_adresses_id, options_from_collection_for_select(Shipping_Adress.all, :id, :full_address) %> -->
+
+  <!-- customer テーブルに登録されている住所 -->
+  <%= f.radio_button :address_number, 1 %>
+  <%= f.label :address_number_1, "ご自身の住所" %>
+  <%= current_customer.adress %>
+
+  <br>
+  <%= f.submit "確認画面へ進む" %>
 
 <% end %>
 
