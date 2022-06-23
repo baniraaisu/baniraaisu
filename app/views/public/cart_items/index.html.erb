@@ -1,14 +1,57 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h2>ショッピングカート</h2>
+<%= link_to "カートを空にする",  public_cart_items_destroy_all_path, method: :delete %>
 
-<!--テストよう-->
-<tabel>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.number %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</tabel>
+<table>
+   <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+   </tr>
+
+    <% total = 0 %>
+
+<% if current_customer.cart_items.present? %>
+ <% @cart_items.each do |cart_item| %>
+
+    <tr>
+      <td>
+        <%= image_tag cart_item.item.get_image(100,100)%>
+        <%= cart_item.item.name %>
+      </td>
+      <td>
+        <%= (cart_item.item.tax_off_price*1.10).to_i %>
+      </td>
+      <td>
+        <%= form_with model: cart_item, url: public_cart_item_path(cart_item), method: :patch do |f| %>
+          <%= f.number_field :number, min:1, max:10, id: "number_cart" %>
+          <%= f.submit "変更" %>
+        <% end %>
+      </td>
+      <td>
+          <% subtotal = ((cart_item.item.tax_off_price*cart_item.number)*1.10).to_i %>
+          <%= subtotal %>
+      </td>
+      <td>
+        <%= link_to "削除する", public_cart_item_path(cart_item.id, cart_item), method: :delete %>
+      </td>
+    </tr>
+        <% total += subtotal %>
+   <% end %>
+  <% end %>
+
+    <tr>
+      <th> <%= link_to "買い物を続ける", public_items_path %></th>
+      <th>合計金額</th>
+      <th><%= total %></th>
+    </tr>
+
+    <tr>
+      <th><%= link_to "情報入力に進む", new_public_order_path %></th>
+    </tr>
+  </table>
+
+
+
+
