@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  # before_action :authenticate_admin
   def index
     @items = Item.all
   end
@@ -9,9 +10,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+    @genre = Genre.all
     @item = Item.new(item_params)
-    @item.save
+    if @item.save
     redirect_to admin_item_path(@item)
+    else
+    render 'new'
+    end
   end
 
   def show
