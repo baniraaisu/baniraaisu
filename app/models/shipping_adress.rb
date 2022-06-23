@@ -1,10 +1,5 @@
 class ShippingAdress < ApplicationRecord
-
-  belongs_to :customer
-
-# 住所を繋げるメソッド
-  def full_address
-    '〒' + post_code + ' ' + address + ' ' + adress_name
-  end
-
+    validates :adress_name,presence: true
+    validates :adress,presence: true
+    validates :post_code,length: {is: 7},presence: true
 end
