@@ -5,9 +5,13 @@ class Public::ShippingAdressesController < ApplicationController
   end
 
   def create
+    @shipping_adresses = ShippingAdress.all
     @shipping_adress = ShippingAdress.new(shipping_adress_params)
-    @shipping_adress.save
+    if @shipping_adress.save
     redirect_to request.referrer
+    else
+      render 'index'
+    end
   end
 
   def edit
