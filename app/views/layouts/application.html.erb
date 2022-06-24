@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <script src="https://kit.fontawesome.com/122102e289.js" crossorigin="anonymous"></script>
+
+    <!--新規フォント-->
+    
   </head>
 
   <body>
@@ -16,7 +20,7 @@
   　 　 <li>
          <%= link_to "マイページ", public_customer_path(current_customer) %>
   　 　 </li>
-  　 
+
        <li>
          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
        </li>

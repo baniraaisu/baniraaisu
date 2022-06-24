@@ -1,40 +1,65 @@
-<h1>商品編集画面</h1>
+<div class="container">
+  <div class= "row">
+    <div class="col-9 mb-3 mt-3">
+      <h1>商品編集画面</h1>
+      <%= render "layouts/error", obj: @item %>
+    </div>
 
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label :image, "商品画像"%></td>
-      <td><%= f.file_field :image, accept: "/image*" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :name ,"商品名" %></td>
-      <td><%= f.text_field :name, placeholder: "商品名" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :introduction, "商品説明" %></td>
-      <td><%= f.text_area :introduction, placeholder: "@item.introduction"  %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :genre_id, "ジャンル名"%></td>
-      <td><%= f.collection_select(:genre_id, @genre, :id, :name, prompt: "選択してください")%></td>
-    </tr>
-    <tr>
-      <td><%= f.label :tax_off_price, "税抜き価格" %></td>
-      <td><p><%= f.text_field :tax_off_price, placeholder: "1000" %>円</p></td>
-    </tr>
-    <tr>
-      <td><%=f.label :selling_status, "販売ステータス" %></td>
-      <td>
-        <%= f.radio_button :selling_status, :true, checked: true %>
-        <%= f.label :selling_status, "販売中" %>
-      </td>
-      <td>
-        <%= f.radio_button :selling_status, :false %>
-        <%= f.label :selling_status, "売切れ" %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= f.submit '編集を保存' %></td>
-    </tr>
-  </table>
-<% end %>
+    <div class="col-9">
+      <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+        <table>
+          <tr>
+            <div class="form-grope">
+              <td><%= f.label :image, "商品画像"%></td>
+              <td><%= f.file_field :image, accept: "/image*", class: "form-control-file" %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="form-grope">
+              <td><%= f.label :name ,"商品名" %></td>
+              <td><%= f.text_field :name, placeholder: "商品名" ,class: "form-control" %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <div class="form-grope">
+              <td><%= f.label :introduction, "商品説明" %></td>
+              <td><%= f.text_area :introduction, placeholder: "ここに説明文を記入します", class: "form-control" %></td>
+            </div>
+          </tr>
+
+          <tr>
+            <td><%= f.label :genre_id, "ジャンル名"%></td>
+            <td><%= f.collection_select(:genre_id, @genre, :id, :name, prompt: "選択してください")%></td>
+          </tr>
+
+          <tr>
+            <div class="form-grope">
+              <td><%= f.label :tax_off_price, "税抜き価格" %></td>
+              <td><p><%= f.text_field :tax_off_price, placeholder: "1000" ,class: "form-control-lg" %>円</p></td>
+            </div>
+          </tr>
+
+          <tr>
+            <td><%=f.label :selling_status, "販売ステータス" %></td>
+            <td>
+              <%= f.radio_button :selling_status, :true, checked: true %>
+              <%= f.label :selling_status, "販売中" %>
+            </td>
+            <td>
+              <%= f.radio_button :selling_status, :false %>
+              <%= f.label :selling_status, "売切れ" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td><%= f.submit "編集を保存", class: "btn btn-primary mb-3" %></td>
+          </tr>
+
+      　</table>
+      <% end %>
+    </div>
+
+  </div>
+</div>
