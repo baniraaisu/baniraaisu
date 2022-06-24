@@ -1,21 +1,32 @@
+<div class="container">
+  <div class="row">
+    <!--<div class="col-3 mt-3">-->
+      <%= render "genre_selector", genres: @genres %>
+    </div>
 
+    <div class="col-9 mt-3">
 
+      <table>
+        <thead>
+          <tr>
+            <td><h1>商品一覧<span class="font">(全<%= @total_items%>件)</span></h1></td>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to public_item_path(item) do %>
+                  <%= image_tag item.get_image(200,200)%>
+                <% end %>
+              </td>
+              <td><%= item.name%></td>
+              <td><p><%= item.after_tax_on_price.round %>円</p></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
 
-<table>
-  <thead>
-      <th><h1>商品一覧(全<%= @total_items%>件)</h1></th>
-  </thead>
-  <% @items.each do |item| %>
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to public_item_path(item) do %>
-            <%= image_tag item.get_image(200,200)%>
-          <% end %>
-        </td>
-        <td><%= item.name%></td>
-        <td><%= item.after_tax_on_price.round %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
+    </div>
+  </div>
+</div>
