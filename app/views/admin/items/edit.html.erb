@@ -5,7 +5,8 @@
       <%= render "layouts/error", obj: @item %>
     </div>
 
-    <div class="col-9">
+ 
+      <div class="col-9">
       <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
         <table>
           <tr>
@@ -60,6 +61,8 @@
       　</table>
       <% end %>
     </div>
+
+    
 
   </div>
 </div>
