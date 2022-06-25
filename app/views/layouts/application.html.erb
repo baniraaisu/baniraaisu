@@ -17,7 +17,7 @@
 
   <body>
     <header>
-    <nav class="navbar navbar-expand-sm navbar-dark color mb-3" >
+    <nav class="navbar navbar-expand-sm navbar-dark color" >
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
         </div>
        <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-        
+
          <nav class="nav navbar-nav text-white mr-5">
           <span class="customer-name">
           ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
