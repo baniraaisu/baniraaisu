@@ -28,8 +28,15 @@
             <p>Nagano<i class="fa-solid fa-apple-whole"></i>Cake</p>
             <% end %>
         </div>
-        <ul class="navbar-nav ml-auto">
+       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
+        
+         <nav class="nav navbar-nav text-white mr-5">
+          <span class="customer-name">
+          ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
+          </span>
+         </nav>
+
         <li>
            <%= link_to "マイページ", public_customer_path(current_customer), class: "btn btn-outline-light mr-3" %>
         </li>
