@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <h1>商品一覧です</h1>
+    <div class="col-10 mt-4">
+      <h1><strong>商品一覧</strong></h1>
     </div>
     <div class="col-2">
       <%= link_to new_admin_item_path do %>
@@ -11,8 +11,8 @@
   </div>
 
   <div class"row">
-    <div class="col-1"></div>
-    <div class="col-9 d-flex ">
+    <div class="col-3"></div>
+    <div class="col-8">
       <table class="table">
         <thead class="thead">
           <tr>
@@ -39,9 +39,19 @@
           <% end %>
         </tbody>
       </table>
-
     </div>
-
   </div>
+
+  <div class="row">
+      <div class="col ">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li><%= paginate @items %></li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+
+
 </div>
 
