@@ -2,11 +2,26 @@
   <div class="row">
     <div class="col">
       <h1><strong>注文情報入力</strong></h1>
-      <table>
-        <thaed>
-          <th><strong>支払方法</strong></th>
-        </thaed>
-      </table>
+        <%= form_with model: @order, url: public_orders_path do |f| %>
+          <table>
+            <thaed>
+              <tr>
+                <th><strong>支払方法</strong></th>
+                <td><%= f.select :pay_method, Order.pay_methods.keys.to_a, {}, {} %></td>
+              </tr>
+            </thaed>
+            <tbody>
+              <tr>
+                <th><strong>お届け先</strong></th>
+                <td>
+                  <%#= f.radio_button %>
+                  <h5>ご自身の住所</h5>
+                  <%= current_customer.first_name %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
     </div>
   </div>
 </div>
