@@ -1,14 +1,15 @@
 class Item < ApplicationRecord
- belongs_to :genre
- has_one_attached :image
- has_many :cart_items, dependent: :destroy
- has_many :orders, dependent: :destroy
-
-validates :name,presence: true
-validates :introduction,presence: true
-validates :tax_off_price, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
-                  format: { with: /\A[0-9]+\z/ }
-validates :image,presence: true
+    belongs_to :genre, dependent: :destroy
+    has_one_attached :image
+    has_many :cart_items, dependent: :destroy
+    has_many :orders, dependent: :destroy
+    has_many :shipping_adress, dependent: :destroy
+    
+    validates :name,presence: true
+    validates :introduction,presence: true
+    validates :tax_off_price, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+                      format: { with: /\A[0-9]+\z/ }
+    validates :image,presence: true
 
 
   def get_image(width, height)

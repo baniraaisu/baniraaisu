@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items, dependent: :destroy
+  has_many :shipping_adresses, dependent: :destroy
+
   validates :first_name, :last_name, :adress, :email, presence: true
   validates :tel_number, format: { with: /\A\d{10,11}\z/ }
   validates :first_name_kana, :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }

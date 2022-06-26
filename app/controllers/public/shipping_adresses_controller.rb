@@ -1,12 +1,13 @@
 class Public::ShippingAdressesController < ApplicationController
+  before_action :authenticate_customer!
   def index
-    @shipping_adress = ShippingAdress.new
     @shipping_adresses = ShippingAdress.all
+    @shipping_adress = ShippingAdress.new
   end
 
   def create
     @shipping_adresses = ShippingAdress.all
-    @shipping_adress = ShippingAdress.new(shipping_adress_params)
+    @shipping_adress = current_customer.shipping_adresses.new(shipping_adress_params)
     if @shipping_adress.save
     redirect_to request.referrer
     else
@@ -32,6 +33,6 @@ class Public::ShippingAdressesController < ApplicationController
 
   private
   def shipping_adress_params
-    params.require(:shipping_adress).permit(:post_code, :adress, :adress_name)
+    params.require(:shipping_adress).permit(:customer_id, :post_code, :adress, :adress_name)
   end
 end
