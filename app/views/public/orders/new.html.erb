@@ -1,5 +1,5 @@
 <h1>注文情報入力</h1>
-
+<%= render 'layouts/error', obj: @order %>
 <%= form_with model: @order, url: public_orders_path do |f| %>
   <h5>支払方法</h5>
     <%= f.collection_radio_buttons :pay_method, Order.pay_methods_i18n, :first, :last%>
@@ -8,17 +8,19 @@
   <h5>お届け先</h5>
     <h6>ご自身の住所</h6>
 
-
+    <%= f.radio_button :adress_option, 1, checked: true%>
       <%= current_customer.post_code %>
       <%= current_customer.adress %>
       <%= current_customer.first_name %>
       <%= current_customer.last_name %>
 
     <h6>登録済み住所から選択</h6>
-      <%= f.select :address_id, options_from_collection_for_select(Order.all, :id, :shipping) %>
+    <%= f.radio_button :adress_option, 2, checked: true%>
+      <%= f.select :adress_id, options_from_collection_for_select(ShippingAdress.all, :id, :ship) %>
 
 
     <h6>新しいお届け先</h6>
+    <%= f.radio_button :adress_option, 3, checked: true%>
       <%= f.label :post_code, "郵便番号" %>
       <%= f.text_field :post_code %>
       <%= f.label :adress, "住所" %>

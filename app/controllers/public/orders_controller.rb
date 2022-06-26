@@ -7,11 +7,6 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    if @order.save
-      redirect_to public_order_path(@order)
-    else
-      render :new
-    end
   end
 
   def success
@@ -23,6 +18,33 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+  def check
+    @order.pay_method = params[:pay_method]
+    @order.postage = 800
+    @order.total_amount = current_customer.total_amount + @order.postage
+
+    case @adress_option = params[:adress_option].to_i
+    when 1
+      @order.post_code = current_customer.post_code
+      @order.adress = current_customer.adress
+      @order.adress_name = current_customer.first_name+current_customer.last_name
+    when 2
+      @shipping = params[:order][:select_adress].to_i
+      @set_adress = ShippingAdress.find(@shipping)
+      @order.post_code = @set_adress.post_code
+      @order.adress = @set_adress.adress
+      @order.adress_name = @set_adress.adress_name
+
+      @order
+    when 3
+      if @order.save
+        redirect_to  new_public_order_path
+      else
+        render :new
+      end
+    end
+
+  end
 
   private
   def order_params
