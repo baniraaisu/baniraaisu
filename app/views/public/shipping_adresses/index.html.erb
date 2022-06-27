@@ -1,6 +1,8 @@
-<h1>配送先登録/一覧</h1>
-
-<%= render "layouts/error", obj: @shipping_adress %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-4 mb-3">
+      <h1 class="mb-3"><strong>配送先登録/一覧</strong></h1>
+      <%= render "layouts/error", obj: @shipping_adress %>
 
       <%= form_with model: @shipping_adress, url: public_shipping_adresses_path do |f| %>
         <%= f.label :post_code, "郵便番号" %>
@@ -12,24 +14,30 @@
         <%= f.submit "新規登録" %>
       <% end %>
 
-<table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+  <thead>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @shipping_adresses.each do |shipping_adress| %>
   <tbody>
     <tr>
-      <td>郵便番号</td>
-      <td>住所</td>
-      <td>宛名</td>
-      <td></td>
+      <th scope="row">〒<%= shipping_adress.post_code %></th>
+      <td><%= shipping_adress.adress %></td>
+      <td><%= shipping_adress.adress_name %>様</td>
+      <td><%= link_to "編集する", edit_public_shipping_adress_path(shipping_adress) %></td>
+      <td><%= link_to "消去する", public_shipping_adress_path(shipping_adress), method: :delete %></td>
     </tr>
-      <% @shipping_adresses.each do |shipping_adress| %>
-          <tr>
-            <td>〒<%= shipping_adress.post_code %></td>
-            <td><%= shipping_adress.adress %></td>
-            <td><p><%= shipping_adress.adress_name %>様</p></td>
-            <td>
-              <%= link_to "編集する", edit_public_shipping_adress_path(shipping_adress) %>
-              <%= link_to "消去する", public_shipping_adress_path(shipping_adress), method: :delete %>
-            </td>
-          </tr>
-      <% end %>
   </tbody>
+  <% end %>
 </table>
