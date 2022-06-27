@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 .color {
     background-color: #990033;
 }
@@ -25,15 +26,13 @@
     text-decoration: none;
 }
 
-.body {
-    margin-bottom: 30px;
-    display: block;
-    height: 800px;
-}
+/*.body {*/
 
-main {
-    margin-bottom: 10px;
-}
+/*    display: block;*/
+/*    height: 800px;*/
+/*}*/
+
+
 
 .top-image {
     background-image: url(cake.jpg);
@@ -51,18 +50,13 @@ main {
     height: 350px;
     display: inline-block;
     background-color: rgb(255, 240, 245, 0.5);
-    margin-bottom: 50px;
-
+    margin-bottom: none;
 }
 
 .top-main {
     background-color: #FFf6d9;
     height: 300px;
-
-}
-
-.top-title {
-    margin-top: 20px;
+    margin-top: none;
 
 }
 
@@ -76,9 +70,9 @@ main {
     padding-bottom: 10px;
 }
 
-.top-bottom {
-     background-color: #c5956b;
-     height: 160px;
+.top-background-color {
+    margin: 30px;
+
 }
 
 .about-image {
