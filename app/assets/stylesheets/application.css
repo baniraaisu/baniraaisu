@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 .color {
     background-color: #990033;
 }
@@ -25,39 +26,37 @@
     text-decoration: none;
 }
 
-.body {
-    margin-bottom: 30px;
-    display: block;
-    height: 800px;
-}
+/*.body {*/
 
-main {
-    margin-bottom: 10px;
-}
+/*    display: block;*/
+/*    height: 800px;*/
+/*}*/
+
+
 
 .top-image {
     background-image: url(cake.jpg);
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     height: 350px;
     text-align: center;
-    padding-top: 160px;
     padding-right: 1100px;
 }
 
 .top-text {
+    padding-top: 115px;
+    width: 400px;
     color: black;
-
+    height: 350px;
+    display: inline-block;
+    background-color: rgb(255, 240, 245, 0.5);
+    margin-bottom: none;
 }
 
 .top-main {
     background-color: #FFf6d9;
     height: 300px;
-
-}
-
-.top-title {
-    margin-top: 20px;
+    margin-top: none;
 
 }
 
@@ -71,9 +70,9 @@ main {
     padding-bottom: 10px;
 }
 
-.top-bottom {
-     background-color: #c5956b;
-     height: 160px;
+.top-background-color {
+    margin: 30px;
+
 }
 
 .about-image {

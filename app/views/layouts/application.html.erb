@@ -11,8 +11,6 @@
     <script src="https://kit.fontawesome.com/122102e289.js" crossorigin="anonymous"></script>
 
 
-    <!--新規フォント-->
-
   </head>
 
   <body>
@@ -31,7 +29,7 @@
        <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
 
-         <nav class="nav navbar-nav text-white mr-5">
+         <nav class="nav navbar-nav text-white mt-1 mr-5">
           <span class="customer-name">
           ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
           </span>
@@ -86,7 +84,7 @@
     <%= yield %>
     </main>
 
-    <footer class="color text-light pt-3 pb-1">
+    <footer class="color text-light pt-3 pb-1 fixed-bottom ">
         <p class="text-center"> © nagano cake</p>
      </footer>
 

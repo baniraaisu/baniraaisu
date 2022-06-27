@@ -1,18 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mt-4">
+    <div class="col-9 mt-4 mb-3">
       <h1><strong>商品一覧</strong></h1>
     </div>
-    <div class="col-2">
-      <%= link_to new_admin_item_path do %>
-        <i class="fa-solid fa-circle-plus fa-3x new"></i>
-      <% end %>
+
+    <!--新規の商品登録とジャンル登録-->
+    <div class="col-3 mt-4 d-flex flex-row">
+          <%= link_to new_admin_item_path do %>
+            <!--<i class="fa-solid fa-cake-candles fa-3x new m-3"></i>-->
+            <p class="btn btn-outline-danger mr-3">new item</p>
+          <% end %>
+
+          <%= link_to admin_genres_path do %>
+            <!--<i class="fa-solid fa-circle-plus fa-3x new m-3"></i>-->
+            <p class="btn btn-outline-danger">new genre</p>
+          <% end %>
     </div>
+
   </div>
 
   <div class"row">
-    <div class="col-3"></div>
-    <div class="col-8">
+    <div class="col-12">
       <table class="table">
         <thead class="thead">
           <tr>
@@ -42,14 +50,15 @@
     </div>
   </div>
 
+
   <div class="row">
-      <div class="col ">
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <li><%= paginate @items %></li>
-          </ul>
-        </nav>
-      </div>
+    <div class="col-12 d-flex justify-content-center  mt-5 ">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li><%= paginate @items, theme: 'bootstrap-5' %></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 
 

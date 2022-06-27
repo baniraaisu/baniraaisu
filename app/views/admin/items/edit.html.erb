@@ -1,11 +1,11 @@
 <div class="container">
   <div class= "row">
     <div class="col-9 mb-3 mt-3">
-      <h1>商品編集画面</h1>
+      <h1><strong>商品編集画面</strong></h1>
       <%= render "layouts/error", obj: @item %>
     </div>
 
- 
+
       <div class="col-9">
       <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
         <table>
@@ -62,7 +62,7 @@
       <% end %>
     </div>
 
-    
+
 
   </div>
 </div>
