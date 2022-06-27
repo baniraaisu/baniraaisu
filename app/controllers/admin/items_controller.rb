@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin
   def index
-    @items = Item.page(params[:page]).per(2)
+    @items = Item.page(params[:page]).per(5)
   end
 
   def new
@@ -32,6 +32,12 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to admin_item_path(@item.id)
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy(item_params)
+    redirect_to request.referrer
   end
 
   private

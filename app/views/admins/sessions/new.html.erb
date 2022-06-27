@@ -6,7 +6,8 @@
 
     <h2><strong>管理者ログイン</strong></h2><br>
 
-    <%= form_with model: @admin, url: admin_session_path do |f| %>
+
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
       <div class="field">
         <%= f.label :email, "メールアドレス　　　　" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,6 +24,7 @@
         </div>
       </div>
     <% end %>
+
        </div>
      </div>
     </div>

@@ -37,16 +37,21 @@ main {
 
 .top-image {
     background-image: url(cake.jpg);
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     height: 350px;
     text-align: center;
-    padding-top: 160px;
     padding-right: 1100px;
 }
 
 .top-text {
+    padding-top: 115px;
+    width: 400px;
     color: black;
+    height: 350px;
+    display: inline-block;
+    background-color: rgb(255, 240, 245, 0.5);
+    margin-bottom: 50px;
 
 }
 

@@ -1,7 +1,6 @@
 
 
 
-
 <div class="top-image">
   <p class="top-text">
     ようこそ、Nagano Cakeへ！<br><br>
@@ -12,26 +11,28 @@
 </div>
 
 <div class="top-main">
-  <div class="row">
-    <h1 class="top-title"><strong>　　New Cakes</strong></h1>
-  </div>
+  <h1 class="top-title"><strong>　　New Cakes</strong></h1>
+</div>
 
 <div class="row">
- <div class="col">
+ <div class="col-12">
 
 <div class="top-items">
 <% @items.each do |item| %>
-
-    <!-- 商品画像 -->
-    <%= image_tag item.get_image(100,100) %>
-    <!-- 商品名 -->
-    <%= item.name %>
-    <!--値段-->
-    ￥<%= item.after_tax_on_price.round %>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
-
-
-
-<% end %>
+      <div class="col-4">
+        <div class="card-group">
+          <div class="card">
+            <%= link_to public_item_path(item), class: "card-img-top" do %>
+              <%= image_tag item.get_image(348,350)%>
+            <% end %>
+            <div class="card-body">
+              <%= item.name%><br>
+              <p><%= item.after_tax_on_price.round %>円</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
 </div>
 
     <div class="row">

@@ -30,14 +30,19 @@
               <% else %>
                       <td class="text-success">有効</td>
               <% end %>
-
             </tr>
           <% end %>
         </tbody>
-
       </table>
-      </div>
-       <%= paginate @customers %>
-      </div>
+
     </div>
+    <div class="row">
+    <div class="col-12 d-flex justify-content-center  mt-5 ">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li><%= paginate @customers, theme: 'bootstrap-5' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
   </div>

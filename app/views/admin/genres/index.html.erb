@@ -1,9 +1,20 @@
 <div class="container">
 
   <div class="row">
-    <div class="header col-7 mb-3 mt-3">
-      <h1>ジャンル一覧・追加</h1>
+    <div class="header col-8 mb-3 mt-3">
+      <h1><strong>ジャンル一覧・追加</strong></h1>
       <%= render "layouts/error", obj: @genre %>
+    </div>
+    <div class="col-3 mt-4 d-flex flex-row">
+      <%= link_to new_admin_item_path do %>
+        <!--<i class="fa-solid fa-cake-candles fa-3x new m-3"></i>-->
+        <p class="btn btn-outline-danger mr-3">new item</p>
+      <% end %>
+
+      <%= link_to admin_genres_path do %>
+        <!--<i class="fa-solid fa-circle-plus fa-3x new m-3"></i>-->
+        <p class="btn btn-outline-danger">new genre</p>
+      <% end %>
     </div>
   </div>
 
