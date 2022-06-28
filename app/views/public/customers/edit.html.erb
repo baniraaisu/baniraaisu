@@ -3,7 +3,7 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
 
     <%= render 'layouts/error', obj: @customer %>
-    <h2><strong>会員情報編集</strong></h2>
+    <h2 class="mt-3"><strong>会員情報編集</strong></h2>
     <%= form_with model:@customer, url:public_customer_path do |f| %>
        <div class="form-group mt-5">
             <%= f.label :"氏名　　　　　　" %>

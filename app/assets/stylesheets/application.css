@@ -84,9 +84,9 @@
 
 .about-text {
     padding: 100px 170px;
+    width: 60%;
     background-color: #FFf6d9;
-
-
+    text-align: center;
 }
 
 .about-content {
