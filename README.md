@@ -1,24 +1,18 @@
-# README
+# NaganoCake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+長野のとあるケーキ屋【NaganoCake】のECサイトです。
 
-Things you may want to cover:
+## 概要
 
-* Ruby version
+* アプリケーション名：baniraaisu
 
-* System dependencies
+## 使用方法
 
-* Configuration
+管理者ログイン
+* メールアドレス【admin@admin】
+* パスワード　【baniraaisu】
 
-* Database creation
+## バージョン
 
-* Database initialization
+Rails 6.1.6 ruby 2.6.3
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

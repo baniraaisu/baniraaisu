@@ -1,0 +1,48 @@
+<div class='container'>
+
+     <div class="row">
+      <div class="col-md-12 mx-auto mt-4">
+
+
+   <h2><strong>会員一覧</strong></h2><br>
+   <div class="row">
+   <table class="col-md-12">
+       <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+       </thead>
+
+       <tbody>
+          <% @customers.each do |customer| %>
+            <tr class="border">
+              <td><%= customer.id %></td><br>
+              <td><%= link_to admin_customer_path(customer), class:"text-info" do %>
+                   <%= customer.first_name %><%= customer.last_name %>
+                  <% end %>
+              </td><br>
+               <td><%= customer.email %></td><br>
+              <% if customer.is_deleted == true %>
+                      <td class="text-secondary">退会</td>
+              <% else %>
+                      <td class="text-success">有効</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="row">
+    <div class="col-12 d-flex justify-content-center  mt-5 ">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li><%= paginate @customers, theme: 'bootstrap-5' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mt-4 mb-4">
+       <h1><strong>商品一覧</strong><span class="font">(全<%= @total_items%>件)</span></h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-4">
+        <div class="card-group">
+          <div class="card">
+            <%= link_to public_item_path(item), class: "card-img-top" do %>
+              <%= image_tag item.get_image(348,350)%>
+            <% end %>
+            <div class="card-body">
+              <%= item.name%><br>
+              <p><%= item.after_tax_on_price.round %>円</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-center  mt-5 ">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li><%= paginate @items, theme: 'bootstrap-5' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</div>

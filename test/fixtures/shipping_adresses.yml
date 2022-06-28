@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adress_name: MyString
+  post_code: MyString
+  adress: MyString
+
+two:
+  adress_name: MyString
+  post_code: MyString
+  adress: MyString
